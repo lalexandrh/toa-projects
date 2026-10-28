@@ -1,0 +1,207 @@
+{
+  "_notes": "Synthetic test fixtures for prompt.md. Each case has raw input text (simulating either a full scraped JD or an OpenGraph-only fallback) and the expected normalized output. Free-text fields (description_summary, skills, city) are soft/advisory — the harness should not hard-fail on exact-string mismatches there, only on enum/boolean/number fields.",
+
+  "cases": [
+    {
+      "id": "ma_onsite_wetlab_biotech",
+      "job_url": "https://jobs.ashbyhq.com/seaport-bio/111",
+      "raw_text": "Senior Assay Scientist — Seaport Bio. Location: Boston, MA (Seaport, on-site). Seaport Bio recently closed our Series A and is building a next-generation oncology therapeutics platform. You will run high-throughput wet lab assays, develop cell culture protocols, and manage our vivarium operations. This is a 100% on-site bench role; no remote option. Compensation: $120,000 - $145,000/year.",
+      "expected": {
+        "is_ma_eligible": true,
+        "rejection_reason": null,
+        "workplace_type": "Strictly On-site",
+        "facility_type": "Wet Lab / Vivarium",
+        "job_function": "Biotech & Life Sciences",
+        "seniority": "Senior",
+        "is_founding_role": false,
+        "equity_tier": "N/A",
+        "salary_min": 120000,
+        "salary_max": 145000,
+        "salary_currency": "USD",
+        "inferred_funding_stage": "Series A",
+        "inferred_primary_vertical": "Biotech & Life Sciences",
+        "inferred_transit_corridor": "Seaport / Innovation District"
+      }
+    },
+    {
+      "id": "ma_hybrid_hardware_robotics",
+      "job_url": "https://boards.greenhouse.io/kendallmotion/222",
+      "raw_text": "Robotics Controls Engineer — Kendall Motion Labs. Office in Waltham, MA; hybrid, 3 days/week in office. We are a Series B company building autonomous warehouse manipulators. You'll work in our hardware lab running CNC-machined prototype actuators and cleanroom sensor calibration. Salary range $140,000-$165,000.",
+      "expected": {
+        "is_ma_eligible": true,
+        "rejection_reason": null,
+        "workplace_type": "Hybrid (3-4 days/wk)",
+        "facility_type": "Hardware Lab / Machine Shop",
+        "job_function": "Robotics & Hardware",
+        "is_founding_role": false,
+        "salary_min": 140000,
+        "salary_max": 165000,
+        "salary_currency": "USD",
+        "inferred_funding_stage": "Series B",
+        "inferred_primary_vertical": "Robotics & Hardware",
+        "inferred_transit_corridor": "Route 128 / MetroWest (Car/Rail)"
+      }
+    },
+    {
+      "id": "founding_ml_engineer",
+      "job_url": "https://jobs.ashbyhq.com/kendall-motion/333",
+      "raw_text": "Founding Machine Learning Engineer — Kendall Motion Labs. You will be one of our first 10 employees, reporting directly to our CTO. Hybrid, 3-4 days/week in our Kendall Square, Cambridge office with hardware-in-the-loop test rigs for physical manipulation robots. Equity: 1.0%-2.0% for this early hire. $150,000-$180,000 base.",
+      "expected": {
+        "is_ma_eligible": true,
+        "rejection_reason": null,
+        "workplace_type": "Hybrid (3-4 days/wk)",
+        "facility_type": "Hardware Lab / Machine Shop",
+        "job_function": "Machine Learning & AI",
+        "is_founding_role": true,
+        "technical_domain": ["Physical AI / Robotics"],
+        "equity_tier": "High (>1.0%)",
+        "salary_min": 150000,
+        "salary_max": 180000,
+        "salary_currency": "USD",
+        "inferred_transit_corridor": "Kendall / Cambridge (Red Line)"
+      }
+    },
+    {
+      "id": "ma_remote_restricted",
+      "job_url": "https://jobs.lever.co/coastalsaas/444",
+      "raw_text": "Customer Success Manager — Coastal SaaS. Fully remote, open only to candidates residing in Massachusetts. No physical office. We help mid-market retailers manage inventory with our SaaS platform.",
+      "expected": {
+        "is_ma_eligible": true,
+        "rejection_reason": null,
+        "workplace_type": "Remote (MA-Only)",
+        "facility_type": "Distributed / Remote",
+        "job_function": "GTM & Sales",
+        "is_founding_role": false,
+        "inferred_funding_stage": "Unspecified / Early Stage",
+        "inferred_primary_vertical": "Enterprise SaaS",
+        "inferred_transit_corridor": "Remote / Distributed"
+      }
+    },
+    {
+      "id": "out_of_state_rejected",
+      "job_url": "https://boards.greenhouse.io/texasstartup/555",
+      "raw_text": "Backend Software Engineer — Texas Startup Inc. Location: Austin, TX. On-site required, 5 days/week in our Austin office. Not open to remote candidates outside Texas.",
+      "expected": {
+        "is_ma_eligible": false,
+        "workplace_type": "Strictly On-site"
+      }
+    },
+    {
+      "id": "ambiguous_funding_stage_generalist",
+      "job_url": "https://jobs.lever.co/backbayco/666",
+      "raw_text": "Business Operations Generalist — BackBay Co. Boston, MA (Back Bay), hybrid 2 days/week in office. Join our small, fast-moving team across finance, people ops, and vendor management. No funding details mentioned in this posting.",
+      "expected": {
+        "is_ma_eligible": true,
+        "rejection_reason": null,
+        "workplace_type": "Hybrid (1-2 days/wk)",
+        "facility_type": "Standard Office",
+        "job_function": "Operations, Finance & People",
+        "is_founding_role": false,
+        "inferred_funding_stage": "Unspecified / Early Stage",
+        "inferred_transit_corridor": "Downtown / Back Bay (Orange/Green)"
+      }
+    },
+    {
+      "id": "remote_us_unrestricted",
+      "job_url": "https://jobs.ashbyhq.com/driftai/777",
+      "raw_text": "Growth Marketer — Drift AI. Remote - US. We're a fully distributed AI SaaS startup, no physical office, team spread across the US. Open to candidates in any US state including Massachusetts.",
+      "expected": {
+        "is_ma_eligible": true,
+        "rejection_reason": null,
+        "workplace_type": "Remote (MA-Only)",
+        "facility_type": "Distributed / Remote",
+        "job_function": "Marketing & Growth",
+        "is_founding_role": false,
+        "inferred_primary_vertical": "AI & DeepTech",
+        "inferred_transit_corridor": "Remote / Distributed"
+      }
+    },
+    {
+      "id": "marketing_growth_role",
+      "job_url": "https://jobs.lever.co/pixelflow/101",
+      "raw_text": "Performance Marketing Lead — PixelFlow. Cambridge, MA (Kendall Square), hybrid 3 days/week in office. PixelFlow recently closed our Series A and is growing our enterprise SaaS platform for retail analytics. You'll own paid acquisition, SEO, and lifecycle email campaigns, and build out our growth marketing function from scratch. $95,000-$120,000 + performance bonus.",
+      "expected": {
+        "is_ma_eligible": true,
+        "rejection_reason": null,
+        "workplace_type": "Hybrid (3-4 days/wk)",
+        "facility_type": "Standard Office",
+        "job_function": "Marketing & Growth",
+        "is_founding_role": false,
+        "salary_min": 95000,
+        "salary_max": 120000,
+        "salary_currency": "USD",
+        "inferred_funding_stage": "Series A",
+        "inferred_primary_vertical": "Enterprise SaaS",
+        "inferred_transit_corridor": "Kendall / Cambridge (Red Line)"
+      }
+    },
+    {
+      "id": "data_analytics_role",
+      "job_url": "https://jobs.lever.co/harbormetrics/102",
+      "raw_text": "Senior Data Analyst — HarborMetrics. Boston, MA, hybrid 2 days/week in office. HarborMetrics is a Series B fintech analytics company serving regional banks. You'll build SQL/Python ETL pipelines, maintain executive dashboards, and support ad-hoc reporting for the leadership team. $110,000-$130,000.",
+      "expected": {
+        "is_ma_eligible": true,
+        "rejection_reason": null,
+        "workplace_type": "Hybrid (1-2 days/wk)",
+        "facility_type": "Standard Office",
+        "job_function": "Data & Analytics",
+        "is_founding_role": false,
+        "technical_domain": [],
+        "salary_min": 110000,
+        "salary_max": 130000,
+        "salary_currency": "USD",
+        "inferred_funding_stage": "Series B",
+        "inferred_primary_vertical": "FinTech & InsurTech"
+      }
+    },
+    {
+      "id": "cybersecurity_classical_ml",
+      "job_url": "https://boards.greenhouse.io/sentinelguard/103",
+      "raw_text": "Senior Fraud Detection Engineer — SentinelGuard Security. Boston, MA (Seaport), hybrid 3 days/week in office. SentinelGuard is a Series B company building AI-driven fraud and anomaly detection for financial institutions. You'll build and maintain gradient-boosted and anomaly-detection models for real-time transaction risk scoring — this is classical applied ML, not an LLM or computer-vision role. $160,000-$190,000.",
+      "expected": {
+        "is_ma_eligible": true,
+        "rejection_reason": null,
+        "workplace_type": "Hybrid (3-4 days/wk)",
+        "facility_type": "Standard Office",
+        "job_function": "Machine Learning & AI",
+        "is_founding_role": false,
+        "technical_domain": ["Classical ML / Predictive Analytics"],
+        "salary_min": 160000,
+        "salary_max": 190000,
+        "salary_currency": "USD",
+        "inferred_funding_stage": "Series B",
+        "inferred_primary_vertical": "Cybersecurity",
+        "inferred_secondary_verticals": ["FinTech & InsurTech"],
+        "inferred_transit_corridor": "Seaport / Innovation District"
+      }
+    },
+    {
+      "id": "opengraph_fallback_minimal",
+      "job_url": "https://careers.climaterobotics.example/jobs/888",
+      "source_note": "Simulates the anti-bot-wall fallback path (SPEC.md §4 step 5) -- only OpenGraph title/description available, not the full JD.",
+      "raw_text": "Senior Software Engineer at Climate Robotics — Join our team building climate tech robotics in Boston, MA.",
+      "expected": {
+        "is_ma_eligible": true,
+        "seniority": "Senior",
+        "inferred_primary_vertical": "ClimateTech & Clean Energy"
+      }
+    },
+    {
+      "id": "multi_vertical_secondary",
+      "job_url": "https://boards.greenhouse.io/cambridgeclimate/999",
+      "raw_text": "ML Infrastructure Engineer — CambridgeClimate AI. Series A company applying AI-driven modeling to grid optimization and climate forecasting. Hybrid, 2 days/week in our Cambridge, MA office (Central Square). $145,000-$170,000.",
+      "expected": {
+        "is_ma_eligible": true,
+        "rejection_reason": null,
+        "workplace_type": "Hybrid (1-2 days/wk)",
+        "job_function": "Machine Learning & AI",
+        "salary_min": 145000,
+        "salary_max": 170000,
+        "inferred_funding_stage": "Series A",
+        "inferred_primary_vertical": "ClimateTech & Clean Energy",
+        "inferred_secondary_verticals": ["AI & DeepTech"],
+        "inferred_transit_corridor": "Kendall / Cambridge (Red Line)"
+      }
+    }
+  ]
+}
